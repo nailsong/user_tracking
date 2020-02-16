@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/**/*'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'spec/**/*.rb'
+Documentation:
+  Enabled: false

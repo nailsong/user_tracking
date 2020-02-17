@@ -3,8 +3,10 @@
 class ReportsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
+  REPORTS_LIMIT = 50
+
   def index
-    @reports = Report.all
+    @reports = Report.order(timestamp: :desc).limit(REPORTS_LIMIT)
   end
 
   def show; end

@@ -1,25 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Relatório de acessos</h1>
-
-<table>
+<div>
+  <%= link_to "Home", home_path %>
+  <h1>Relatório de acessos</h1>
+  <table>
   <thead>
     <tr>
-      <th>Url</th>
       <th>Guid</th>
+      <th>Url</th>
       <th>Timestamp</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-  <tbody>
-    <% @reports.each do |report| %>
-      <tr>
-        <td><%= report.url %></td>
-        <td><%= report.guid %></td>
-        <td><%= report.timestamp %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<script type="text/javascript">window.onload = REPORT.track()</script>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= report.guid %></td>
+          <td><%= report.url %></td>
+          <td><%= report.timestamp %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <script type="text/javascript">window.onload = REPORT.track()</script>
+</div>

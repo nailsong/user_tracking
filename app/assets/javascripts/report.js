@@ -1,42 +1,40 @@
-window.REPORT = (function(){
-  function REPORT(){
-    return localStorage.getItem("guid") || newGuid()
+window.report = (function(){
+  function report(){
+    return localStorage.getItem('guid') || newGuid()
   }
 
-  REPORT.version = "0.0.1"
-
-  REPORT.defaultEndpoint = "http://localhost:3000/reports"
+  report.defaultEndpoint = 'http://localhost:3000/reports'
   
-  REPORT.setEndpoint = function(endpoint){
-    localStorage.setItem("REPORTEndpoint", endpoint)
+  report.setEndpoint = function(endpoint){
+    localStorage.setItem("reportEndpoint", endpoint)
   }
 
-  REPORT.track = function(){
+  report.track = function(){
     fetch(endpoint(), {
       headers: {
         "Content-Type": "application/json; charset=utf-8"
       },
       method: 'POST',
-      body: buildBody()
+      body: paramsBody()
     })
   }
 
   function newGuid(){
     var guid = 'xxxxxx-6xxxx--yxxxx-xxxxx9'.replace(/[xy]/g, function(c) {
-      var r = Math.random()*14|0, v = c == 'x' ? r : (r&0x3|0x8)
+      var rdm = Math.random()*14|0, v = c == 'x' ? rdm : (rdm&0x3|0x8)
       return v.toString(14)
     })
-    localStorage.setItem("guid", guid)
+    localStorage.setItem('guid', guid)
     return guid
   }
 
   function endpoint(){
-    return localStorage.getItem("REPORTEndpoint") || REPORT.defaultEndpoint
+    return localStorage.getItem('reportEndpoint') || report.defaultEndpoint
   }
 
-  function buildBody(){
+  function paramsBody(){
     return JSON.stringify({
-      guid: REPORT(),
+      guid: report(),
       url: location(),
       timestamp: timestamp()
     })
@@ -51,5 +49,5 @@ window.REPORT = (function(){
     return date.getTime()
   }
 
-  return REPORT
+  return report
 })()

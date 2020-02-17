@@ -17,7 +17,10 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'mongoid-rspec', '~> 4.0.1', require: false
   gem 'pry-byebug'
+  gem 'rails-controller-testing', '~> 1.0.4'
+  gem 'rspec-json_expectations', '~> 2.2.0'
   gem 'rspec-rails', '4.0.0.beta4'
   gem 'rubocop-rails', require: false
 end

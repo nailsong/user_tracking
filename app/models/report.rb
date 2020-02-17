@@ -2,8 +2,9 @@
 
 class Report
   include Mongoid::Document
-  field :url, type: String
   field :guid, type: String
   field :timestamp, type: Integer
-  embedded_in :contact
+  field :url, type: String
+
+  validates :guid, :timestamp, :url, presence: true
 end

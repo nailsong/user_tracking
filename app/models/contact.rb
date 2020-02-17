@@ -2,7 +2,11 @@
 
 class Contact
   include Mongoid::Document
-  field :name, type: String
+  include Mongoid::Timestamps
   field :email, type: String
+  field :name, type: String
   field :guid, type: String
+
+  validates :email, :name, presence: true
+  validates :email, uniqueness: true
 end

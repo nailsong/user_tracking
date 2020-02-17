@@ -13,6 +13,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new
   end
 
+  # rubocop: disable Metrics/MethodLength
   def create
     @contact = Contact.new(contact_params)
 
@@ -27,6 +28,7 @@ class ContactsController < ApplicationController
       end
     end
   end
+  # rubocop: enable Metrics/MethodLength
 
   private
 
